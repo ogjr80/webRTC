@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>Hello WebRTC</h2>
+        <video autoplay></video>
+
+
+
+        <script> 
+            navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.getUserMedia || navigator.mozGetUserMedia; 
+            var constraints = {video: true, audio: true}; 
+
+            var videoPlayer = document.querySelector('video'); 
+
+            navigator.getUserMedia(constraints, onSuccess, onError); 
+
+            function onSuccess(stream){
+                videoPlayer.src = window.URL.createObjectURL(stream);
+                videoPlayer.play(); 
+
+            }
+
+            function onError(error){
+                console.log('error occured while fetching media streams', error); 
+            }
+
+        </script> 
+    </body>
+</html>
